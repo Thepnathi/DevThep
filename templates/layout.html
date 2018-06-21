@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- A block which other template can inherit as a base layout -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- check if title is given to the template -->
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>DevThep</title>
+    {% endif %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
