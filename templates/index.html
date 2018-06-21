@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Welcomet to DevThep</h1>
-    
-    <p>{{ name }}</p>
-    <!-- Access the post/database -->
-    <!-- {% for post in exampleBlog %}
-        <h1>jjs</h1>
-        <h1>{{ post.title }}</h1>
-        <p>By {{ post.author }} Date: {{ post.date }} </p>
-        <p> {{ post.content }} </p>
-    {% endfor %} -->
-
-
-</body>
-</html>
+<!-- get the layout/block as a base  -->
+{% extends "layout.html" %}
+    {% block content %}
+        {% for post in posts %}
+            <h1>{{ post.title }}</h1>
+            <h4>{{ post.date }}</h4>
+            <p>{{ post.content }}</p>
+        {% endfor %}
+    {% endblock content %}

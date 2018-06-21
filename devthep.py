@@ -11,11 +11,18 @@ date = datetime.datetime.today().strftime('%d-%m-%Y')
 blogCategory = ['Programming', 'Web Development', 'Computer Science', 'Everyday Life', 'Travelling', 'Careers',
 'Software Engineer', 'Mathematics']
 
-exampleBlog = [
+examplePost = [
     {
         'author': 'Thepnathi Stephenson',
-        'title': 'Introduction to Flask Framework for Python',
+        'title': 'Flask Framework for Python',
         'category': 'Programming',
+        'date': date,
+        'content': 'Some contents'
+    },
+    {
+        'author': 'Thepnathi Stephenson',
+        'title': 'Too many technologies to learn',
+        'category': ['Programming', 'Web Development'],
         'date': date,
         'content': 'Some contents'
     }
@@ -28,11 +35,11 @@ exampleBlog = [
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('index.html', name="Thepnathi")
+    return render_template('index.html', posts=examplePost )
 
 @app.route("/about")
 def about():
-    return render_template('about-me.html')
+    return render_template('about-me.html', title="About Me")
 
 @app.route("/blog")
 def blog():
