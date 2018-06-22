@@ -2,11 +2,20 @@
 # Thepnathi Stephenson
 import datetime
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
+from form import RegistrationForm, LoginForm
 app = Flask(__name__)
+
+# You can generate a secret key by 
+# import secrets 
+# secrets.token_hex(length_of_key)
+app.config['SECRET_KEY'] ='e9da605dfa4193c24e1a10706c383369'
 
 # get current time in dd/mm/yyyy
 date = datetime.datetime.today().strftime('%d-%m-%Y')
+
+now = datetime.datetime.today()
 
 blogCategory = ['Programming', 'Web Development', 'Computer Science', 'Everyday Life', 'Travelling', 'Careers',
 'Software Engineer', 'Mathematics']
@@ -31,27 +40,40 @@ examplePost = [
 # Routes Declaration
 # Routes will run the function below
 
+# show the latest blog 
+# for the home page
+def latestPost(blogs):
+    for post in blogs:
+        if post['author'] == 'Thepnathi Stephenson':
+            return post
+
 # Function below will render/load the html template
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('index.html', posts=examplePost )
+    return render_template('home.html', posts = examplePost, title="Hello There")
 
 @app.route("/about")
 def about():
-    return render_template('about-me.html', title="About Me")
-
-@app.route("/blog")
-def blog():
-    return "Blog page"
+    return render_template('about.html', title="About Me")
 
 @app.route("/category")
 def category():
-    return "Catergories for different blog"
+    return render_template('category.html', title="Blog Category")
 
 @app.route("/contact")
 def conbtact():
-    return "How to contact me"
+    return render_template('contact.html', title="Contact")
+
+@app.route("/register")
+def registert():
+    form = RegistrationForm()
+    return render_template('register.html', title="Register", form=form)
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', title="Login", form=form)
 
 # Python3 devthep.py 
 # to run on debug mode
