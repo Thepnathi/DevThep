@@ -13,10 +13,19 @@
     {% endif %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
 <body>
+    <section id="nav">
+        <a href="/">Big Blog</a>
+        <a href="/about">About Me</a>
+        <a href="/category">Category</a>
+        <a href="/contact">Contact</a>
+    </section>
+
+
     {% block content %}
     {% endblock %}
 </body>

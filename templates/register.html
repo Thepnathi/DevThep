@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+    {% block content %}
+        <div>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend>Join DevThep</legend>
+                    <dir>{{ form.username.label() }}</dir>
+                </fieldset>
+            </form>
+        </div>
+    {% endblock content %}
+
+
