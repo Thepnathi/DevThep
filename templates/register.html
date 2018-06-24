@@ -4,9 +4,27 @@
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
-                    <legend>Join DevThep</legend>
-                    <dir>{{ form.username.label() }}</dir>
+                    <legend>Register DevThep</legend>
+                    <div>
+                        {{ form.username.label(class="styleIt") }}
+                        {{ form.username(class="style") }}
+                    </div>
+                    <div>
+                        {{ form.email.label(class="styleIt") }}
+                        {{ form.email(class="style") }}
+                    </div>
+                    <div>
+                        {{ form.password.label(class="styleIt") }}
+                        {{ form.password(class="style") }}
+                    </div>
+                    <div>
+                        {{ form.confirm_password.label(class="styleIt") }}
+                        {{ form.confirm_password(class="style") }}
+                    </div>
                 </fieldset>
+                <div>
+                    {{ form.submit(class="button-style") }}
+                </div>
             </form>
         </div>
     {% endblock content %}
