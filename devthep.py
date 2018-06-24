@@ -4,12 +4,16 @@ import datetime
 
 from flask import Flask
 from flask import render_template
-from form import RegistrationForm, LoginForm
+from flask import url_for
+from flask import redirect
+from form import RegistrationForm
+from form import LoginForm
 app = Flask(__name__)
 
 # You can generate a secret key by 
 # import secrets 
 # secrets.token_hex(length_of_key)
+# Change and hide secret when deploy
 app.config['SECRET_KEY'] ='e9da605dfa4193c24e1a10706c383369'
 
 # get current time in dd/mm/yyyy
@@ -62,16 +66,18 @@ def category():
     return render_template('category.html', title="Blog Category")
 
 @app.route("/contact")
-def conbtact():
+def contact():
     return render_template('contact.html', title="Contact")
 
-@app.route("/register")
-def registert():
+@app.route("/register", methods=["GET", 'POST'])
+def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        return redirect(url_for('home'))
     return render_template('register.html', title="Register", form=form)
 
 @app.route("/login")
-def login():
+def loginFunc():
     form = LoginForm()
     return render_template('login.html', title="Login", form=form)
 
