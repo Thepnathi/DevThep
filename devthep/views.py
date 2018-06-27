@@ -1,7 +1,7 @@
 from flask import render_template
 from flask import url_for
 from flask import redirect
-from devthep import app
+from devthep import app, db, bcrypt
 from devthep.form import RegistrationForm
 from devthep.form import LoginForm
 from devthep.models import User, User
@@ -25,11 +25,7 @@ examplePost = [
         'content': 'Some contents'
     }
 ]
-# Routes Declaration
-# Routes will run the function below
 
-# show the latest blog 
-# for the home page
 def latestPost(blogs):
     for post in blogs:
         if post['author'] == 'Thepnathi Stephenson':
@@ -45,10 +41,14 @@ def home():
 def about():
     return render_template('about.html', title="About Me")
 
-@app.route("/register", methods=["GET", 'POST'])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        hashPassword = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+        newUser = User(username = form.username.data, email = form.email.data, password = hashPassword)
+        db.session.add(newUser)
+        db.session.commit()
         return redirect(url_for('home'))
     return render_template('register.html', title="Register", form=form)
 

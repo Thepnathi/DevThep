@@ -2,7 +2,7 @@
 # Thepnathi Stephenson
 from devthep import app
 
-# Run on debug mode
+# Run on debug mode debug=true
 if __name__ == '__main__':
     app.run(debug=True)
 
