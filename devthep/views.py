@@ -9,23 +9,6 @@ from devthep.models import User, User
 blogCategory = ['Programming', 'Web Development', 'Computer Science', 'Everyday Life', 'Travelling', 'Careers',
 'Software Engineer', 'Mathematics']
 
-examplePost = [
-    {
-        'author': 'Thepnathi Stephenson',
-        'title': 'Flask Framework for Python',
-        'category': 'Programming',
-        'date': '101',
-        'content': 'Some contents'
-    },
-    {
-        'author': 'Thepnathi Stephenson',
-        'title': 'Too many technologies to learn',
-        'category': ['Programming', 'Web Development'],
-        'date': '01',
-        'content': 'Some contents'
-    }
-]
-
 def latestPost(blogs):
     for post in blogs:
         if post['author'] == 'Thepnathi Stephenson':
