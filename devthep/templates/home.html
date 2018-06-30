@@ -2,8 +2,8 @@
 {% extends "layout.html" %}
     {% block content %}
         {% for post in posts %}
-            <h1>{{ post.title }}</h1>
-            <h4>{{ post.date }}</h4>
-            <p>{{ post.content }}</p>
+            <h1>{{ post.Title }}</h1>
+            <p>By {{ post.Author }} - Published: {{ post.Date }}</p>
+            <p>{{ post.Content }}</p>
         {% endfor %}
     {% endblock content %}

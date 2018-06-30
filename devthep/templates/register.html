@@ -3,29 +3,28 @@
         <div>
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
-                <fieldset class="form-group">
-                    <legend>Register DevThep</legend>
+                <fieldset>
+                    <legend>Reigster</legend>
                     <div>
-                        {{ form.username.label(class="styleIt") }}
-                        {{ form.username(class="style") }}
+                        {{ form.username.label(class="") }}
+                        {{ form.username(class="") }}
                     </div>
                     <div>
-                        {{ form.email.label(class="styleIt") }}
-                        {{ form.email(class="style") }}
+                        {{ form.email.label(class="") }}
+                        {{ form.email(class="") }}
                     </div>
                     <div>
-                        {{ form.password.label(class="styleIt") }}
-                        {{ form.password(class="style") }}
+                        {{ form.password.label(class="") }}
+                        {{ form.password(class="") }}
                     </div>
-                        <div>
-                            {{ form.confirm_password.label(class="styleIt") }}
-                            {{ form.confirm_password(class="style") }}
-                        </div>
+                    <div>
+                        {{ form.confirm_password.label(class="") }}
+                        {{ form.confirm_password(class="") }}
+                    </div>
                 </fieldset>
-                <div>
-                    {{ form.submit(class="button-style") }}
-                </div>
+                <input type="submit" value="Go">
             </form>
+            <div>You can sign in <a href="{{ url_for('loginFunc') }}">Here</a></div>
         </div>
     {% endblock content %}
 

@@ -1,2 +1,2 @@
-# My Blog Website
+# Blog :)
 
