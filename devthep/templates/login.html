@@ -1,23 +1,17 @@
 {% extends "layout.html" %}
     {% block content %}
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend>Login</legend>
-                <div>
-                    {{ form.email.label(class="styleIt") }}
-                    {{ form.email(class="style") }}
-                </div>
-                <div>
-                    {{ form.password.label(class="styleIt") }}
-                    {{ form.password(class="style") }}
-                </div>
-
-            </fieldset>
-            <div>
-                {{ form.submit(class="button-style") }}
-            </div>
-        </form>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.email.label }}
+            {{ form.email() }}
+        </div>
+        <div> 
+            {{ form.password.label }}
+            {{ form.password() }}
+        </div>
+        <input type="submit" value="Go">
+    </form>
     {% endblock content %}
 
 

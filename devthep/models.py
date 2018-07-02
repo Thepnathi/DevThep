@@ -1,8 +1,12 @@
 from datetime import datetime
-from devthep import db
+from devthep import db, loginManager
+from flask_login import UserMixin
 
-# SQLlite database 
-class User(db.Model): 
+@loginManager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class User(db.Model, UserMixin): 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
@@ -10,7 +14,7 @@ class User(db.Model):
     post = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}')"
 
 # nullable=false - mean it requires the content
 class Post(db.Model): 

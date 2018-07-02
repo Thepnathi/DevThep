@@ -2,7 +2,19 @@
     {% block content %}
     <form method="POST" action="">
         {{ form.csrf_token }}
-        {{ form.name.label }} {{ form.name(size=20) }}
+        <!-- {{ form.hidden_tag() }} -->
+        <div>
+            {{ form.username.label }} 
+            {{ form.username() }}
+        </div>
+        <div>
+            {{ form.email.label }}
+            {{ form.email() }}
+        </div>
+        <div> 
+            {{ form.password.label }}
+            {{ form.password() }}
+        </div>
         <input type="submit" value="Go">
     </form>
     {% endblock content %}
