@@ -4,6 +4,7 @@ from flask import redirect
 from devthep import app, db, bcrypt
 from devthep.form import LoginForm, MyForm
 from devthep.models import User, User
+from flask_login import login_user, current_user, logout_user
 
 blogCategory = ['Programming', 'Web Development', 'Computer Science', 'Everyday Life', 'Travelling', 'Careers',
 'Software Engineer', 'Mathematics']
@@ -40,13 +41,26 @@ def about():
 
 @app.route("/login", methods=('GET', 'POST'))
 def loginFunc():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect(url_for('home'))
+        # Login for user
+        # User will return none if user data does not exist
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            # Uses flask login extention to help us login
+            # cookie to allow the user to remember if its ticked
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            return redirect('/login')
     return render_template('login.html', title="Login", form=form)  
 
 @app.route('/submit', methods=('GET', 'POST'))
 def submit():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = MyForm()
     if form.validate_on_submit():
         print("Welcome " + form.username.data)
@@ -56,3 +70,12 @@ def submit():
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('submit.html', title="Register", form=form)
+
+@app.route('/logout', methods=('GET', 'POST'))
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+@app.route('/user')
+def user():
+    return render_template('user.html', title="User")
