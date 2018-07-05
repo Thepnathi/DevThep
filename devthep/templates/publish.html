@@ -1,0 +1,28 @@
+<!-- Creates new post  -->
+{% extends "layout.html" %}
+    {% block content %}
+        <h1>New Post {{ current_user.username }}!</h1>
+
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            <div>
+                {{ form.title.label }}
+                {{ form.title() }}
+            </div>
+            <div>
+                {{ form.image.label }}
+                {{ form.image() }}
+            </div>
+            <div>
+                {{ form.category.label }}
+                {{ form.category() }}
+            </div>
+            <div>
+                {{ form.content.label }}
+                {{ form.content(class="blogField") }}
+            </div>
+            <input type="submit" value="Go">
+        </form>
+    {% endblock content %}
+
+

@@ -10,7 +10,15 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 
+# Render html form for registration
 class MyForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
+
+
+class NewBlog(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    image = StringField('Image', validators=[DataRequired()])
+    category = StringField('Categories', validators=[DataRequired()])
+    content = StringField('Content', validators=[DataRequired()])

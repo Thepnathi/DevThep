@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
+    image = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(30), nullable=False)
     date_published = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
