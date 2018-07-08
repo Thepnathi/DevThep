@@ -46,19 +46,19 @@ def about():
 def loginFunc():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    form = LoginForm()
-    if form.validate_on_submit():
+    loginForm = LoginForm()
+    if loginForm.validate_on_submit():
         # Login for user
         # User will return none if user data does not exist
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
+        user = User.query.filter_by(email=loginForm.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, loginForm.password.data):
             # Uses flask login extention to help us login
             # cookie to allow the user to remember if its ticked
             login_user(user)
             return redirect(url_for('home'))
         else:
             return redirect('/login')
-    return render_template('login.html', title="Login", form=form)  
+    return render_template('login.html', title="Login", form=loginForm)  
 
 @app.route('/submit', methods=('GET', 'POST'))
 def submit():
@@ -66,9 +66,9 @@ def submit():
         return redirect(url_for('home'))
     registerForm = MyForm()
     if registerForm.validate_on_submit():
-        print("Welcome " + form.username.data)
-        hashPassword = bcrypt.generate_password_hash(form.password.data).decode('utf-8', 'strict')
-        addNewUser = User(username = form.username.data, email = form.email.data, password = hashPassword)
+        print("Welcome " + registerForm.username.data)
+        hashPassword = bcrypt.generate_password_hash(registerForm.password.data).decode('utf-8', 'strict')
+        addNewUser = User(username = registerForm.username.data, email = registerForm.email.data, password = hashPassword)
         db.session.add(addNewUser)
         db.session.commit()
         return redirect(url_for('home'))

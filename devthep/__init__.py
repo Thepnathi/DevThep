@@ -7,7 +7,7 @@ from flask_login import LoginManager
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] ='e9da605dfa4193c24e1a10706c383369'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///testDB.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 loginManager = LoginManager(app)
