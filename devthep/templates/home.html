@@ -1,15 +1,24 @@
 <!-- get the layout/block as a base  -->
 {% extends "layout.html" %}
     {% block content %}
-        <div class="columns">
+        <div>
         {% for post in posts %}
-            <div class="column">
+            <div class="image-frame">
                 <h1>{{ post.Title }}</h1>
                 <img src="{{ post.Image }}" style="width: 400px;"/>
-                <p>By {{ post.Author }} - Published: {{ post.Date }}</p>
+                <p><i>By {{ post.Author }} - Published: {{ post.Date }}</i></p>
                 <p>{{ post.Content }}</p>
             </div>
         {% endfor %}
         </div>
-        <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
+
+        <div class="quote">
+            {% if random_quote %}
+            <p> {{ quote }}</p>
+            <p> {{ author }} </p>
+            <p> {{ category }}</p>
+            {% else %}
+            <p>Welcome to DevThep!</p>
+            {% endif %}
+        </div>
     {% endblock content %}

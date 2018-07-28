@@ -5,6 +5,7 @@ from devthep import app, db, bcrypt
 from devthep.form import LoginForm, MyForm, NewBlog
 from devthep.models import User, Post
 from flask_login import login_user, current_user, logout_user
+from devthep.quote_api import get_random_quote
 
 blogCategory = ['Programming', 'Web Development', 'Computer Science', 'Everyday Life', 'Travelling', 'Careers',
 'Software Engineer', 'Mathematics']
@@ -26,17 +27,19 @@ examplePost = [
     }
 ]
 
-def latestPost(blogs):
-    for post in blogs:
-        if post['author'] == 'Thepnathi Stephenson':
-            return post
-
 # Function below will render/load the html template
 @app.route("/")
 @app.route("/home")
 def home():
-    # We need to display only the latest blog
-    return render_template('home.html', posts = examplePost, title="Hello There")
+    random_quote = get_random_quote()
+
+    return render_template( 'home.html', 
+    posts = examplePost, 
+    title="Dev-Thep Blogging Platform",
+    quote = random_quote['quote'], 
+    author = random_quote['author'], 
+    category = random_quote['cat']
+    )
 
 @app.route("/about")
 def about():

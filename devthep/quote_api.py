@@ -1,25 +1,15 @@
 import json
 import requests
 
-API_TOKEN = 'your_api_token'
-API_URL = 'https://api.digitalocean.com/v2/'
-API_URL_DAILY_QUOTE = 'http://quotes.rest/qod.json'
+API_URL = 'https://talaikis.com/api/quotes/random/'
 
-response = requests.get(API_URL_DAILY_QUOTE)
+response = requests.get(API_URL)
 data = response.json()
 
-print(data['quote'])
+def get_random_quote():
 
-# headers = {'Content-Type': 'application/json',
-#            'Authorization': 'Bearer {0}'.format(API_TOKEN)}
+    if response.status_code == 200:
+        return data
+    else:
+        return None
 
-# def get_account_info():
-
-#     api_url = '{0}account'.format(API_URL)
-
-#     response = requests.get(api_url, headers=headers)
-
-#     if response.status_code == 200:
-#         return json.loads(response.content.decode('utf-8'))
-#     else:
-#         return None

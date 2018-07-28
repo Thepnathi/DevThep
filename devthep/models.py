@@ -14,9 +14,8 @@ class User(db.Model, UserMixin):
     post = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+          return '<User %r>' % self.username
 
-# nullable=false - mean it requires the content
 class Post(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
@@ -27,4 +26,6 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"User('{self.title}', '{self.date_published}')"
+          return '<Post %r>' % self.title
+
+# http://flask-sqlalchemy.pocoo.org/2.3/models/
