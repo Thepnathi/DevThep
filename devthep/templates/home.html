@@ -1,6 +1,15 @@
 <!-- get the layout/block as a base  -->
 {% extends "layout.html" %}
     {% block content %}
+
+        <div class="quote">
+            {% if quote %}
+            <p> "{{ quote }}" <i>{{ author }}</i></p>
+            {% else %}
+            <p>Welcome to DevThep!</p>
+            {% endif %}
+        </div>
+
         <div>
         {% for post in posts %}
             <div class="image-frame">
@@ -10,15 +19,5 @@
                 <p>{{ post.Content }}</p>
             </div>
         {% endfor %}
-        </div>
-
-        <div class="quote">
-            {% if random_quote %}
-            <p> {{ quote }}</p>
-            <p> {{ author }} </p>
-            <p> {{ category }}</p>
-            {% else %}
-            <p>Welcome to DevThep!</p>
-            {% endif %}
         </div>
     {% endblock content %}
