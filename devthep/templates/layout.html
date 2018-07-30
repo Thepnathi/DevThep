@@ -28,24 +28,30 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="">
     <meta name="theme-color" content="#ffffff">
- 
-    <link rel="stylesheet.css" type="text/css" media="screen" href="../static/stylesheet.css" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
     <script src="main.js"></script>
 </head>
 <body>
     <header class="navigation">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About Me</a>
-
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('publish') }}">Publish</a>
-            <a href="{{ url_for('user') }}">{{ current_user.username }}</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-        {% else %}
-            <a href="{{ url_for('loginFunc') }}">Login</a>
-            <a href="{{ url_for('submit') }}">Register</a>
-        {% endif %}
+        <h1 class="title center has-text-centered">DevThep</h1>
+        <div class="custom-navbar">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Blogs</a></li>
+                <li><a href="{{ url_for('about') }}">Category</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('publish') }}">Publish</a></li>
+                    <li><a href="{{ url_for('user') }}">{{ current_user.username }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('loginFunc') }}">Login</a></li>
+                    <li><a href="{{ url_for('submit') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </header>
     {% block content %}
     {% endblock %}

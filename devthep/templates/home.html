@@ -16,7 +16,9 @@
                 <h1>{{ post.Title }}</h1>
                 <img src="{{ post.Image }}" style="width: 400px;"/>
                 <p><i>By {{ post.Author }} - Published: {{ post.Date }}</i></p>
+                <!-- {% for words in post.Content %} -->
                 <p>{{ post.Content }}</p>
+                <!-- <p>{{ len(post.Content)</p> -->
             </div>
         {% endfor %}
         </div>

@@ -7,7 +7,6 @@ response = requests.get(API_URL)
 data = response.json()
 
 def get_random_quote():
-
     if response.status_code == 200:
         return data
     else:
