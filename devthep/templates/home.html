@@ -10,16 +10,34 @@
             {% endif %}
         </div>
 
-        <div>
+        <div class="tile is-ancestor">
+                <div class="tile is-4 is-vertical is-parent">
+                  <div class="tile is-child box">
+                    <p class="title">{{ postOne.Title }}</p>
+                    <p>{{postOne.Author}} - {{ postOne.Date }}</p>
+                    <img src="{{ postOne.Image }}"/>
+                    <p>{{ postOne.Summary }}</p>
+                  </div>
+                  <div class="tile is-child box">
+                    <p class="title">{{ postTwo.Title }}</p>
+                    <img src="{{ postTwo.Image }}"/>
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child box">
+                    <p class="title">{{ postThree.Title }}</p>
+                    <img src="{{ postThree.Image }}"/>
+                  </div>
+                </div>
+              </div>
+
+        <!-- <div>
         {% for post in posts %}
             <div class="image-frame">
                 <h1>{{ post.Title }}</h1>
                 <img src="{{ post.Image }}" style="width: 400px;"/>
                 <p><i>By {{ post.Author }} - Published: {{ post.Date }}</i></p>
-                <!-- {% for words in post.Content %} -->
-                <p>{{ post.Content }}</p>
-                <!-- <p>{{ len(post.Content)</p> -->
             </div>
         {% endfor %}
-        </div>
+        </div> -->
     {% endblock content %}
