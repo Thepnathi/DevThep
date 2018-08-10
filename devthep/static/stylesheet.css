@@ -1,6 +1,5 @@
-
-.image-frame {
-    color: black;
+body {
+    background-color: blue;
 }
 
 .custom-navbar ul {
