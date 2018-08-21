@@ -1,10 +1,10 @@
 <!-- get the layout/block as a base  -->
-{% extends "layout.html" %}
+{% extends "base.html" %}
     {% block content %}
 
         <div class="quote">
             {% if quote %}
-            <p style="margin: 25px;"> "{{ quote }}" <i>{{ author }}</i></p>
+            <p style="margin-bottom: 15px;"> "{{ quote }}" <i>{{ author }}</i> {{ date }}</p>
             {% else %}
             <p>Welcome to DevThep!</p>
             {% endif %}

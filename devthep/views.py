@@ -7,18 +7,18 @@ from devthep.models import User, Post
 from devthep.dummyData import examplePost
 from flask_login import login_user, current_user, logout_user
 from devthep.quote_api import get_random_quote
+from devthep.test import getCurrentDate
 
 # Function below will render/load the html template
 @app.route("/")
 @app.route("/home")
 def home():
     random_quote = get_random_quote()
-    print ("SERVER SUCC")
-    print (examplePost[0])
 
     return render_template( 'home.html', 
     postOne = examplePost[0], postTwo = examplePost[1], postThree = examplePost[2],
-    title="Dev-Thep Blogging Platform",
+    title = "Dev-Thep Blogging Platform",
+    date = getCurrentDate(),
     quote = random_quote['quote'], 
     author = random_quote['author'], 
     category = random_quote['cat']
